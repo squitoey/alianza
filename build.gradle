@@ -9,3 +9,8 @@ repositories {
 dependencies {
     testCompile 'org.testng:testng:6.8.5'
 }
+
+
+task wrapper(Type: Wrapper) {
+  version '1.6'
+}
