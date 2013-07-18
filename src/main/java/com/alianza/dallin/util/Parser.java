@@ -40,6 +40,15 @@ public class Parser {
         int length = strings.size();
         int [][] sortedIntegers = new int[length][2];
 
+        for (String s: strings) {
+            int i = Integer.parseInt(s);
+
+        }
         return sortedIntegers;
+    }
+
+    protected int parseString(String string) {
+        int i = Integer.parseInt(string);
+        return i;
     }
 }
