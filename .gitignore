@@ -1,3 +1,10 @@
+*.iml
+*.ipr
+*.iws
+
+.gradle
+
+build
 *.class
 
 # Package Files #
