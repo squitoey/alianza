@@ -2,6 +2,9 @@
 *.ipr
 *.iws
 
+AlianzaHistogram.txt
+AlianzaAscending.txt
+
 .gradle
 
 build
