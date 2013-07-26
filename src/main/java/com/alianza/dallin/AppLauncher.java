@@ -1,5 +1,6 @@
 package com.alianza.dallin;
 
+import com.alianza.dallin.util.FileWriter;
 import com.alianza.dallin.util.Parser;
 
 import java.io.File;
@@ -12,11 +13,6 @@ import java.nio.file.OpenOption;
 import java.nio.file.Path;
 import java.util.List;
 
-/**
- * User: Dallin
- * Date: 7/17/13
- * Time: 10:53 PM
- */
 public class AppLauncher {
     public static void main(String[] args) {
         Parser parser = new Parser();
@@ -42,17 +38,8 @@ public class AppLauncher {
             buf.append(i);
             buf.append(System.getProperty("line.separator"));
         }
-        FileOutputStream fos;
-        FileChannel fc = null;
-        try {
-            fos = new FileOutputStream(sortedFilePath.toString());
-            fc = fos.getChannel();
-            fos.write(buf.toString().getBytes());
-            fc.close();
-        } catch (IOException ioe) {
-            System.out.println("FATAL ERROR: Unable to write the AlianzaAscending.txt file. " + ioe.getMessage());
-            System.exit(2);
-        }
+        FileWriter writer = new FileWriter("AlianzaAscending.txt");
+        writer.write(buf);
 
         buf = new StringBuffer();
         int[][] histResults = parser.groupInt(results);
@@ -62,15 +49,7 @@ public class AppLauncher {
             buf.append(histResults[1][i]);
             buf.append(System.getProperty("line.separator"));
         }
-        fc = null;
-        try {
-            fos = new FileOutputStream(histogramFilePath.toString());
-            fc = fos.getChannel();
-            fos.write(buf.toString().getBytes());
-            fc.close();
-        } catch (IOException ioe) {
-            System.out.println("FATAL ERROR: Unable to write the AlianzaHistogram.txt file. " + ioe.getMessage());
-            System.exit(2);
-        }
+        writer = new FileWriter("AlianzaHistogram.txt");
+        writer.write(buf);
     }
 }

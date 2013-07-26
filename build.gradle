@@ -14,6 +14,10 @@ test {
   useTestNG()
 }
 
+task runApp(dependsOn: 'classes', type: JavaExec) {
+        main = 'com.alianza.dallin.AppLauncher'
+        classpath = sourceSets.main.runtimeClasspath
+}
 
 task wrapper (type: Wrapper) {
       gradleVersion "1.6"
